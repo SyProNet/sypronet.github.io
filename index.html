@@ -82,7 +82,7 @@
   
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/index.css?v=1.0">
   
   <!-- Non-critical CSS - Load asynchronously -->
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -107,10 +107,33 @@
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
+  <script defer src="static/js/index.js?v=1.0"></script>
   
   <!-- Model Viewer for 3D models -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+  
+  <!-- Inline script to ensure switchModel is available globally -->
+  <script>
+    // Ensure switchModel function is available globally
+    window.switchModel = function(modelName) {
+      const modelViewer = document.getElementById('model-viewer');
+      const buttons = document.querySelectorAll('.model-switch-btn');
+      
+      if (modelViewer) {
+        // Update model source
+        modelViewer.src = `static/3d/${modelName}.glb`;
+        
+        // Update button active state
+        buttons.forEach(btn => {
+          if (btn.getAttribute('data-model') === modelName) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+    };
+  </script>
   
   <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
