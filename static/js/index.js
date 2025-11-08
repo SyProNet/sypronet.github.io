@@ -72,6 +72,26 @@ function copyBibTeX() {
     }
 }
 
+// Switch 3D Model
+function switchModel(modelName) {
+    const modelViewer = document.getElementById('model-viewer');
+    const buttons = document.querySelectorAll('.model-switch-btn');
+    
+    if (modelViewer) {
+        // Update model source
+        modelViewer.src = `static/3d/${modelName}.glb`;
+        
+        // Update button active state
+        buttons.forEach(btn => {
+            if (btn.getAttribute('data-model') === modelName) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+}
+
 // Scroll to top functionality
 function scrollToTop() {
     window.scrollTo({
