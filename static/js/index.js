@@ -232,13 +232,17 @@ function initTripleSlider(slider) {
 
     const endPointer = event => {
         if (!activeHandle) return;
-        slider.releasePointerCapture?.(event.pointerId);
+        if (slider.releasePointerCapture) {
+            slider.releasePointerCapture(event.pointerId);
+        }
         activeHandle = null;
     };
 
     const startDrag = (handle, event) => {
         activeHandle = handle;
-        slider.setPointerCapture?.(event.pointerId);
+        if (slider.setPointerCapture) {
+            slider.setPointerCapture(event.pointerId);
+        }
         updateFromPointer(event.clientX);
         event.preventDefault();
     };
@@ -251,7 +255,7 @@ function initTripleSlider(slider) {
     };
 
     slider.addEventListener('pointerdown', event => {
-        const targetHandle = event.target.dataset?.handle;
+        const targetHandle = event.target && event.target.dataset ? event.target.dataset.handle : undefined;
         const handleToUse = targetHandle || pickHandle(event.clientX);
         startDrag(handleToUse, event);
     });
@@ -361,13 +365,17 @@ function initFusionGallery() {
         });
     }
 
-    prevBtn?.addEventListener('click', () => {
-        goToSlide(activeSlide - 1);
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            goToSlide(activeSlide - 1);
+        });
+    }
 
-    nextBtn?.addEventListener('click', () => {
-        goToSlide(activeSlide + 1);
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            goToSlide(activeSlide + 1);
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
