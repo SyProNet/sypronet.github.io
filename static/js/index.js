@@ -370,9 +370,7 @@ function initFusionGallery() {
     });
 }
 
-$(document).ready(function() {
-    // Check for click events on the navbar burger icon
-
+document.addEventListener('DOMContentLoaded', function() {
     var options = {
 		slidesToScroll: 1,
 		slidesToShow: 1,
@@ -380,17 +378,16 @@ $(document).ready(function() {
 		infinite: true,
 		autoplay: true,
 		autoplaySpeed: 5000,
+    };
+
+    if (window.bulmaCarousel && typeof bulmaCarousel.attach === 'function') {
+        bulmaCarousel.attach('.carousel', options);
     }
 
-	// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-	
-    bulmaSlider.attach();
+    if (window.bulmaSlider && typeof bulmaSlider.attach === 'function') {
+        bulmaSlider.attach();
+    }
     
-    // Setup video autoplay for carousel
     setupVideoCarouselAutoplay();
-
-    // Build interactive fusion gallery
     initFusionGallery();
-
-})
+});
