@@ -346,12 +346,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
+      <figure class="teaser-illustration">
+        <img src="static/images/net.svg" alt="Network illustration" style="width: 100%; height: auto;">
+      </figure>
       <h2 class="subtitle has-text-centered">
         Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
       </h2>
@@ -501,6 +498,31 @@
 </section>
 <!-- End Fusion Pair Gallery -->
 
+<!-- Depth Pair Gallery -->
+<section class="section depth-section" id="depth-gallery">
+  <div class="container is-max-desktop">
+    <div class="depth-header">
+      <div>
+        <h2 class="title is-3">Fusion Images</h2>
+      </div>
+      <span class="depth-filename" id="depthActiveName"></span>
+    </div>
+    <div class="fusion-carousel-shell depth-carousel-shell">
+      <button class="fusion-nav-btn" id="depthPrev" aria-label="Previous depth pair">
+        <span class="icon"><i class="fas fa-chevron-left"></i></span>
+      </button>
+      <div class="depth-carousel">
+        <div class="depth-carousel-track" id="depthCarouselTrack"></div>
+      </div>
+      <button class="fusion-nav-btn" id="depthNext" aria-label="Next depth pair">
+        <span class="icon"><i class="fas fa-chevron-right"></i></span>
+      </button>
+    </div>
+    <div class="fusion-carousel-dots" id="depthCarouselDots" role="tablist"></div>
+  </div>
+</section>
+<!-- End Depth Pair Gallery -->
+
 <!-- 3D Model Viewer -->
 <section class="hero is-small">
   <div class="hero-body">
@@ -510,12 +532,22 @@
         <div class="column is-four-fifths">
           <!-- Model Switch Buttons -->
           <div class="model-switch-container">
-            <button class="model-switch-btn active" onclick="switchModel('ir')" data-model="ir">
-              IR
-            </button>
-            <button class="model-switch-btn" onclick="switchModel('vi')" data-model="vi">
+            <button class="model-switch-btn active" onclick="switchModel('vi')" data-model="vi">
               VI
             </button>
+            <button class="model-switch-btn" onclick="switchModel('ir')" data-model="ir">
+              IR
+            </button>
+            <button class="model-switch-btn" onclick="switchModel('mrfs')" data-model="mrfs">
+              MRFS
+            </button>
+            <button class="model-switch-btn" onclick="switchModel('sage')" data-model="sage">
+              SAGE
+            </button>
+            <button class="model-switch-btn" onclick="switchModel('timfusion')" data-model="timfusion">
+              TIM
+            </button>
+            
             <button class="model-switch-btn" onclick="switchModel('ours')" data-model="ours">
               Ours
             </button>
@@ -523,7 +555,7 @@
           <!-- Model Viewer -->
           <model-viewer 
             id="model-viewer"
-            src="static/3d/ir.glb" 
+            src="static/3d/vi/3d/vi.glb" 
             alt="3D Model"
             auto-rotate
             camera-controls

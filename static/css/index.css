@@ -417,22 +417,132 @@ body {
   transform: translateY(0);
 }
 
-.fusion-segment-label--left {
+.fusion-segment-label--rgb {
   left: 16px;
 }
 
-.fusion-segment-label--center {
-  left: 50%;
+.fusion-segment-label--ir {
+  left: 33%;
   transform: translate(-50%, -6px);
 }
 
-.fusion-slider:hover .fusion-segment-label--center,
-.fusion-slider:focus-within .fusion-segment-label--center {
+.fusion-segment-label--sage {
+  left: 66%;
+  transform: translate(-50%, -6px);
+}
+
+.fusion-slider:hover .fusion-segment-label--ir,
+.fusion-slider:focus-within .fusion-segment-label--ir,
+.fusion-slider:hover .fusion-segment-label--sage,
+.fusion-slider:focus-within .fusion-segment-label--sage {
   transform: translate(-50%, 0);
 }
 
-.fusion-segment-label--right {
+.fusion-segment-label--ours {
   right: 16px;
+}
+
+/* Depth Gallery */
+.depth-section {
+  background: var(--background-primary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.depth-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.depth-eyebrow {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.depth-filename {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.depth-carousel-shell {
+  margin-top: 0;
+}
+
+.depth-carousel {
+  flex: 1;
+  overflow: hidden;
+}
+
+.depth-carousel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.depth-slide {
+  flex: 0 0 100%;
+}
+
+.depth-grid {
+  border: none;
+  box-shadow: none;
+  padding: 0.2rem;
+  background: transparent;
+}
+
+.depth-header-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.15rem;
+  margin-bottom: 0.15rem;
+  text-align: center;
+}
+
+.depth-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+.depth-row:last-child {
+  margin-bottom: 0;
+}
+
+.depth-mod-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.depth-cell img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 0;
+  border: none;
+  background: #000;
+  object-fit: contain;
+  padding: 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .depth-header-row,
+  .depth-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .depth-header-row,
+  .depth-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .fusion-card-footer {
